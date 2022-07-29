@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{0F02256C-CFE0-47C1-AA8B-3A144028EEB4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{84FF7BCD-7900-4028-A795-8E092DD7EF66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryBackend.Data", "backend\src\LibraryBackend.Data\LibraryBackend.Data.csproj", "{F8B511BE-281F-4B66-BD3B-D4C472FB7AC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryBackend", "backend\src\LibraryBackend\LibraryBackend.csproj", "{DAE8D4BD-FDDB-4748-9EFC-D2BA9AAE996A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{84FF7BCD-7900-4028-A795-8E092DD7EF66} = {0F02256C-CFE0-47C1-AA8B-3A144028EEB4}
+		{F8B511BE-281F-4B66-BD3B-D4C472FB7AC9} = {84FF7BCD-7900-4028-A795-8E092DD7EF66}
+		{DAE8D4BD-FDDB-4748-9EFC-D2BA9AAE996A} = {84FF7BCD-7900-4028-A795-8E092DD7EF66}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8B511BE-281F-4B66-BD3B-D4C472FB7AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8B511BE-281F-4B66-BD3B-D4C472FB7AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8B511BE-281F-4B66-BD3B-D4C472FB7AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8B511BE-281F-4B66-BD3B-D4C472FB7AC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAE8D4BD-FDDB-4748-9EFC-D2BA9AAE996A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAE8D4BD-FDDB-4748-9EFC-D2BA9AAE996A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAE8D4BD-FDDB-4748-9EFC-D2BA9AAE996A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAE8D4BD-FDDB-4748-9EFC-D2BA9AAE996A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
