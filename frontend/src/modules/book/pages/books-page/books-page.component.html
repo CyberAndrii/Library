@@ -1,0 +1,23 @@
+<add-book-card></add-book-card>
+
+<ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs mt-5">
+  <li [ngbNavItem]="0">
+    <a ngbNavLink>All</a>
+    <ng-template ngbNavContent>
+      <book-list>
+        <book-list-item title="First Book" cover="" [reviews]="9" [rating]="3.9"></book-list-item>
+        <book-list-item title="Second Book" cover="" [reviews]="7" [rating]="5"></book-list-item>
+        <book-list-item title="Third Book" cover="" [reviews]="13" [rating]="4.8"></book-list-item>
+      </book-list>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>Recommended</a>
+    <ng-template ngbNavContent>
+      <book-list>
+      </book-list>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
