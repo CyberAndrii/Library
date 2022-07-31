@@ -136,7 +136,7 @@ public class BooksController : ControllerBase
 
         Book? book;
 
-        if (request.Id != null)
+        if (request.Id.HasValue)
         {
             book = await _dbContext.Books
                 .Where(b => b.Id == request.Id.Value)

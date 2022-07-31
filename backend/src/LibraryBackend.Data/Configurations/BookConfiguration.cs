@@ -10,12 +10,23 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
             .IsUnique();
 
         builder.Property(x => x.Title)
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(100);
 
         builder.Property(x => x.Cover)
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(2_000_000);
+
+        builder.Property(x => x.Content)
+            .IsRequired()
+            .HasMaxLength(2_000_000);
 
         builder.Property(x => x.Author)
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(30);
+
+        builder.Property(x => x.Genre)
+            .IsRequired()
+            .HasMaxLength(20);
     }
 }

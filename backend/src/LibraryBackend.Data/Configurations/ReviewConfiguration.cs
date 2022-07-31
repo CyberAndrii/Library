@@ -10,10 +10,12 @@ public class ReviewConfiguration : IEntityTypeConfiguration<Review>
             .IsUnique();
 
         builder.Property(x => x.Message)
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(256);
 
         builder.Property(x => x.Reviewer)
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(30);
 
         builder.HasOne(r => r.Book)
             .WithMany(b => b.Reviews)

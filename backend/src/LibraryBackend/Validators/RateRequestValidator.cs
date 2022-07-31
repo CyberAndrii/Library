@@ -1,5 +1,3 @@
-using LibraryBackend.DTOs.Requests;
-
 namespace LibraryBackend.Validators;
 
 public class RateRequestValidator : AbstractValidator<RateRequest>

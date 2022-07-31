@@ -1,5 +1,3 @@
-using LibraryBackend.DTOs.Requests;
-
 namespace LibraryBackend.Validators;
 
 public class ReviewRequestValidator : AbstractValidator<ReviewRequest>
@@ -7,9 +5,11 @@ public class ReviewRequestValidator : AbstractValidator<ReviewRequest>
     public ReviewRequestValidator()
     {
         RuleFor(x => x.Message)
-            .NotEmpty();
+            .NotEmpty()
+            .Length(2, 256);
 
         RuleFor(x => x.Reviewer)
-            .NotEmpty();
+            .NotEmpty()
+            .Length(2, 30);
     }
 }
