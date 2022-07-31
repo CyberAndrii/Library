@@ -5,9 +5,12 @@
     <a ngbNavLink>All</a>
     <ng-template ngbNavContent>
       <book-list>
-        <book-list-item title="First Book" cover="" [reviews]="9" [rating]="3.9"></book-list-item>
-        <book-list-item title="Second Book" cover="" [reviews]="7" [rating]="5"></book-list-item>
-        <book-list-item title="Third Book" cover="" [reviews]="13" [rating]="4.8"></book-list-item>
+        <book-list-item *ngFor="let book of (books | async)"
+                        [title]="book.title"
+                        [cover]="book.cover"
+                        [reviews]="book.reviewsNumber"
+                        [rating]="book.rating">
+        </book-list-item>
       </book-list>
     </ng-template>
   </li>
@@ -15,6 +18,12 @@
     <a ngbNavLink>Recommended</a>
     <ng-template ngbNavContent>
       <book-list>
+        <book-list-item *ngFor="let book of (recommendedBooks | async)"
+                        [title]="book.title"
+                        [cover]="book.cover"
+                        [reviews]="book.reviewsNumber"
+                        [rating]="book.rating">
+        </book-list-item>
       </book-list>
     </ng-template>
   </li>

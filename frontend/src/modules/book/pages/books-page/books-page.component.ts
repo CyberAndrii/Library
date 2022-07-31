@@ -1,4 +1,8 @@
 import {Component, Input} from '@angular/core';
+import {Observable} from 'rxjs';
+import {GetBooksResponse} from '../../dto/responses/get-books-response';
+import {GetRecommendedBooksResponse} from '../../dto/responses/get-recommended-books-response';
+import {BooksService} from '../../services/books.service';
 
 @Component({
   selector: 'books-page',
@@ -7,5 +11,12 @@ import {Component, Input} from '@angular/core';
 export class BooksPageComponent {
 
   activeTab = 0;
+  books: Observable<GetBooksResponse[]>;
+  recommendedBooks: Observable<GetRecommendedBooksResponse[]>;
+
+  constructor(private booksService: BooksService) {
+    this.books = booksService.getBooks();
+    this.recommendedBooks = booksService.getRecommendedBooks();
+  }
 
 }
