@@ -1,6 +1,6 @@
 <add-book-card></add-book-card>
 
-<ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs mt-5">
+<ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs mt-4">
   <li [ngbNavItem]="0">
     <a ngbNavLink>All</a>
     <ng-template ngbNavContent>
@@ -20,4 +20,4 @@
   </li>
 </ul>
 
-<div [ngbNavOutlet]="nav" class="mt-2"></div>
+<div [ngbNavOutlet]="nav" class="mb-4"></div>
