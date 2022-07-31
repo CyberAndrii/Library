@@ -8,6 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpLogging(options =>
     options.LoggingFields = RequestMethod | RequestHeaders | RequestQuery | RequestBody | ResponseBody);
 
+builder.Services.AddCors(options => options
+    .AddDefaultPolicy(policy => policy
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowAnyOrigin()));
+
 builder.Services
     .AddControllers()
     .AddFluentValidation(config => config.RegisterValidatorsFromAssemblyContaining<RateRequestValidator>());
@@ -27,6 +33,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.UseHttpLogging(); // after swagger
 
