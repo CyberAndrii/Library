@@ -6,6 +6,8 @@ public class GetBooksResponse
 
     public string Title { get; init; } = null!;
 
+    public string Cover { get; init; } = null!;
+
     public string Author { get; init; } = null!;
 
     public double Rating { get; init; }

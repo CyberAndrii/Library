@@ -28,6 +28,7 @@ public class BooksController : ControllerBase
             {
                 Id = b.Id,
                 Title = b.Title,
+                Cover = b.Cover,
                 Author = b.Author,
                 Rating = b.AverageRating,
                 ReviewsNumber = b.Reviews.Count,
@@ -39,7 +40,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpGet("recommended")]
-    [ProducesResponseType(typeof(IEnumerable<GetRecommendedBookResponse>), 200)]
+    [ProducesResponseType(typeof(IEnumerable<GetRecommendedBooksResponse>), 200)]
     public async Task<IActionResult> GetRecommended([FromQuery(Name = "genre")] string? genre)
     {
         var response = await _dbContext.Books
@@ -47,10 +48,11 @@ public class BooksController : ControllerBase
             .Include(b => b.Ratings)
             .Where(genre != null ? b => b.Genre.Equals(genre, StringComparison.OrdinalIgnoreCase) : b => true)
             .OrderBy(b => b.Ratings.Count > 0 ? b.Ratings.Average(r => r.Score) : 0)
-            .Select(b => new GetRecommendedBookResponse
+            .Select(b => new GetRecommendedBooksResponse
             {
                 Id = b.Id,
                 Title = b.Title,
+                Cover = b.Cover,
                 Author = b.Author,
                 Rating = b.AverageRating,
                 ReviewsNumber = b.Reviews.Count,

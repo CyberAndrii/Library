@@ -1,10 +1,12 @@
 namespace LibraryBackend.DTOs.Responses;
 
-public class GetRecommendedBookResponse
+public class GetRecommendedBooksResponse
 {
     public int Id { get; init; }
 
     public string Title { get; init; } = null!;
+
+    public string Cover { get; init; } = null!;
 
     public string Author { get; init; } = null!;
 
