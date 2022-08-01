@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {SaveBookRequest} from '../dto/requests/save-book-request';
 import {GetBooksResponse} from '../dto/responses/get-books-response';
 import {GetRecommendedBooksResponse} from '../dto/responses/get-recommended-books-response';
+import {GetBookWithReviewsResponse} from '../dto/responses/get-book-with-reviews-response';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,8 @@ export class BooksService {
   constructor(private httpClient: HttpClient) {
   }
 
-  saveBook(book: SaveBookRequest): void {
-    this.httpClient.post(this.baseUrl + 'api/books/save', book)
-      .subscribe();
+  saveBook(book: SaveBookRequest): Observable<Object> {
+    return this.httpClient.post(this.baseUrl + 'api/books/save', book);
   }
 
   getBooks(): Observable<GetBooksResponse[]> {
@@ -26,6 +26,10 @@ export class BooksService {
 
   getRecommendedBooks(): Observable<GetRecommendedBooksResponse[]> {
     return this.httpClient.get<GetRecommendedBooksResponse[]>(this.baseUrl + 'api/recommended');
+  }
+
+  getBookWithReviews(id: number): Observable<GetBookWithReviewsResponse> {
+    return this.httpClient.get<GetBookWithReviewsResponse>(this.baseUrl + 'api/books/' + id);
   }
 
 }

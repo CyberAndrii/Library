@@ -85,6 +85,7 @@ public class BooksController : ControllerBase
             Author = book.Author,
             Cover = book.Cover,
             Content = book.Content,
+            Genre = book.Genre,
             Rating = book.AverageRating,
             Reviews = book.Reviews
                 .Select(r => new GetBookWithReviewsResponse.Review
@@ -130,10 +131,14 @@ public class BooksController : ControllerBase
         void SetProperties(Book book)
         {
             book.Title = request.Title;
-            book.Cover = request.Cover;
             book.Content = request.Content;
             book.Author = request.Author;
             book.Genre = request.Genre;
+
+            if (request.Cover != null)
+            {
+                book.Cover = request.Cover;
+            }
         }
 
         Book? book;

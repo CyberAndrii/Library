@@ -21,6 +21,8 @@ public class GetBookWithReviewsResponse
 
     public string Content { get; init; } = null!;
 
+    public string Genre { get; init; } = null!;
+
     public double Rating { get; init; }
 
     public IReadOnlyList<Review> Reviews { get; init; } = null!;

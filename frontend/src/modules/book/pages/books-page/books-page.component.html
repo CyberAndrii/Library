@@ -1,4 +1,4 @@
-<add-book-card></add-book-card>
+<add-book-card #addBookCard></add-book-card>
 
 <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs mt-4">
   <li [ngbNavItem]="0">
@@ -6,10 +6,12 @@
     <ng-template ngbNavContent>
       <book-list>
         <book-list-item *ngFor="let book of (books | async)"
+                        [id]="book.id"
                         [title]="book.title"
                         [cover]="book.cover"
                         [reviews]="book.reviewsNumber"
-                        [rating]="book.rating">
+                        [rating]="book.rating"
+                        (edit)="addBookCard.editExistingBook($event)">
         </book-list-item>
       </book-list>
     </ng-template>
@@ -19,10 +21,12 @@
     <ng-template ngbNavContent>
       <book-list>
         <book-list-item *ngFor="let book of (recommendedBooks | async)"
+                        [id]="book.id"
                         [title]="book.title"
                         [cover]="book.cover"
                         [reviews]="book.reviewsNumber"
-                        [rating]="book.rating">
+                        [rating]="book.rating"
+                        (edit)="addBookCard.editExistingBook($event)">
         </book-list-item>
       </book-list>
     </ng-template>

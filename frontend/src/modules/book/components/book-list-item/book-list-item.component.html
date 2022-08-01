@@ -6,10 +6,13 @@
     <div class="col">
       <div class="card-body pt-4">
         <h4 class="card-title" style="position: absolute;">{{ title }}</h4>
-        <p class="card-text" style="position: absolute; bottom: 20px">
+        <p class="card-text" style="position: absolute; bottom: 10px">
           <span class="me-4">Reviews: {{ reviews }}</span>
           <span class="me-4">Rating: {{ rating.toFixed(1) }}</span>
         </p>
+        <button class="btn btn-dark" style="position: absolute; bottom: 20px; right: 20px" (click)="edit.emit(this.id)">
+          Edit
+        </button>
       </div>
     </div>
   </div>

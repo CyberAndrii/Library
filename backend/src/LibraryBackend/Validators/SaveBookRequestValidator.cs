@@ -10,18 +10,21 @@ public class SaveBookRequestValidator : AbstractValidator<SaveBookRequest>
             .NotEmpty()
             .Length(2, 100);
 
-        RuleFor(x => x.Cover)
-            .NotEmpty()
-            .Custom((value, context) =>
-            {
-                if (value.StartsWith("data:image/"))
+        When(book => !book.Id.HasValue, () =>
+        {
+            RuleFor(x => x.Cover)
+                .NotEmpty()
+                .Custom((value, context) =>
                 {
-                    return;
-                }
+                    if (value!.StartsWith("data:image/"))
+                    {
+                        return;
+                    }
 
-                context.AddFailure("Not a valid image");
-            })
-            .MaximumLength(2_000_000);
+                    context.AddFailure("Not a valid image");
+                })
+                .MaximumLength(2_000_000);
+        });
 
         RuleFor(x => x.Content)
             .NotEmpty()
