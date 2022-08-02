@@ -58,6 +58,7 @@ public class BooksController : ControllerBase
                 Rating = b.AverageRating,
                 ReviewsNumber = b.Reviews.Count,
             })
+            .Take(10)
             .ToArrayAsync();
 
         return Ok(response);
