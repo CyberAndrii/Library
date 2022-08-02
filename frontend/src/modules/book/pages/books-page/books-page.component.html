@@ -19,6 +19,13 @@
   <li [ngbNavItem]="1">
     <a ngbNavLink>Recommended</a>
     <ng-template ngbNavContent>
+
+      <form class="mt-4" style="display: inline-flex">
+        <input type="text" class="form-control" style="width: 250px"
+               name="genre" placeholder="Genre" [(ngModel)]="genreToSearch"/>
+        <button type="submit" class="btn btn-primary ms-3" (click)="search()">Search</button>
+      </form>
+
       <book-list>
         <book-list-item *ngFor="let book of (recommendedBooks | async)"
                         [id]="book.id"

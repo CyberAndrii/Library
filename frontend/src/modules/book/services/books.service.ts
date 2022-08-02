@@ -17,19 +17,23 @@ export class BooksService {
   }
 
   saveBook(book: SaveBookRequest): Observable<Object> {
-    return this.httpClient.post(this.baseUrl + 'api/books/save', book);
+    let url = this.baseUrl + 'api/books/save';
+    return this.httpClient.post(url, book);
   }
 
   getBooks(): Observable<GetBooksResponse[]> {
-    return this.httpClient.get<GetBooksResponse[]>(this.baseUrl + 'api/books');
+    let url = this.baseUrl + 'api/books';
+    return this.httpClient.get<GetBooksResponse[]>(url);
   }
 
-  getRecommendedBooks(): Observable<GetRecommendedBooksResponse[]> {
-    return this.httpClient.get<GetRecommendedBooksResponse[]>(this.baseUrl + 'api/recommended');
+  getRecommendedBooks(genre: string = ''): Observable<GetRecommendedBooksResponse[]> {
+    let url = this.baseUrl + 'api/books/recommended?genre=' + genre;
+    return this.httpClient.get<GetRecommendedBooksResponse[]>(url);
   }
 
   getBookWithReviews(id: number): Observable<GetBookWithReviewsResponse> {
-    return this.httpClient.get<GetBookWithReviewsResponse>(this.baseUrl + 'api/books/' + id);
+    let url = this.baseUrl + 'api/books/' + id;
+    return this.httpClient.get<GetBookWithReviewsResponse>(url);
   }
 
 }

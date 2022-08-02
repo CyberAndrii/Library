@@ -13,10 +13,15 @@ export class BooksPageComponent {
   activeTab = 0;
   books: Observable<GetBooksResponse[]>;
   recommendedBooks: Observable<GetRecommendedBooksResponse[]>;
+  genreToSearch: string = '';
 
   constructor(private booksService: BooksService) {
     this.books = booksService.getBooks();
     this.recommendedBooks = booksService.getRecommendedBooks();
+  }
+
+  search() {
+    this.recommendedBooks = this.booksService.getRecommendedBooks(this.genreToSearch);
   }
 
 }

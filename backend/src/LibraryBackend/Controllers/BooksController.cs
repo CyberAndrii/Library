@@ -39,14 +39,14 @@ public class BooksController : ControllerBase
         return Ok(responses);
     }
 
-    [HttpGet("recommended")]
+    [HttpGet("books/recommended")]
     [ProducesResponseType(typeof(IEnumerable<GetRecommendedBooksResponse>), 200)]
     public async Task<IActionResult> GetRecommended([FromQuery(Name = "genre")] string? genre)
     {
         var response = await _dbContext.Books
             .AsNoTracking()
             .Include(b => b.Ratings)
-            .Where(genre != null ? b => b.Genre.Equals(genre, StringComparison.OrdinalIgnoreCase) : b => true)
+            .Where(genre != null ? b => b.Genre.Contains(genre, StringComparison.OrdinalIgnoreCase) : b => true)
             .OrderBy(b => b.Ratings.Count > 0 ? b.Ratings.Average(r => r.Score) : 0)
             .Select(b => new GetRecommendedBooksResponse
             {
