@@ -4,6 +4,13 @@
   <li [ngbNavItem]="0">
     <a ngbNavLink>All</a>
     <ng-template ngbNavContent>
+
+      <select class="form-select mt-4" style="width: 250px" aria-label="Order by"
+              [(ngModel)]="orderBy" (change)="reloadBooks()">
+        <option value="0">Title</option>
+        <option value="1">Author</option>
+      </select>
+
       <book-list>
         <book-list-item *ngFor="let book of (books | async)"
                         [id]="book.id"
@@ -23,7 +30,7 @@
       <form class="mt-4" style="display: inline-flex">
         <input type="text" class="form-control" style="width: 250px"
                name="genre" placeholder="Genre" [(ngModel)]="genreToSearch"/>
-        <button type="submit" class="btn btn-primary ms-3" (click)="search()">Search</button>
+        <button type="submit" class="btn btn-primary ms-3" (click)="reloadRecommendedBooks()">Search</button>
       </form>
 
       <book-list>

@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Observable} from 'rxjs';
 import {GetBooksResponse} from '../../dto/responses/get-books-response';
 import {GetRecommendedBooksResponse} from '../../dto/responses/get-recommended-books-response';
+import {BooksOrderBy} from '../../models/books-order-by.model';
 import {BooksService} from '../../services/books.service';
 
 @Component({
@@ -11,16 +12,22 @@ import {BooksService} from '../../services/books.service';
 export class BooksPageComponent {
 
   activeTab = 0;
+  genreToSearch: string = '';
+  orderBy: BooksOrderBy = BooksOrderBy.Title;
+
   books: Observable<GetBooksResponse[]>;
   recommendedBooks: Observable<GetRecommendedBooksResponse[]>;
-  genreToSearch: string = '';
 
   constructor(private booksService: BooksService) {
     this.books = booksService.getBooks();
     this.recommendedBooks = booksService.getRecommendedBooks();
   }
 
-  search() {
+  reloadBooks() {
+    this.books = this.booksService.getBooks(this.orderBy);
+  }
+
+  reloadRecommendedBooks() {
     this.recommendedBooks = this.booksService.getRecommendedBooks(this.genreToSearch);
   }
 

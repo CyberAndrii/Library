@@ -5,6 +5,7 @@ import {SaveBookRequest} from '../dto/requests/save-book-request';
 import {GetBooksResponse} from '../dto/responses/get-books-response';
 import {GetRecommendedBooksResponse} from '../dto/responses/get-recommended-books-response';
 import {GetBookWithReviewsResponse} from '../dto/responses/get-book-with-reviews-response';
+import {BooksOrderBy} from '../models/books-order-by.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,8 @@ export class BooksService {
     return this.httpClient.post(url, book);
   }
 
-  getBooks(): Observable<GetBooksResponse[]> {
-    let url = this.baseUrl + 'api/books';
+  getBooks(orderBy: BooksOrderBy = BooksOrderBy.Title): Observable<GetBooksResponse[]> {
+    let url = this.baseUrl + 'api/books?order=' + orderBy;
     return this.httpClient.get<GetBooksResponse[]>(url);
   }
 
