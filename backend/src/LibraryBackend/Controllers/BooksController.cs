@@ -46,6 +46,7 @@ public class BooksController : ControllerBase
         var response = await _dbContext.Books
             .AsNoTracking()
             .Include(b => b.Ratings)
+            .Where(b => b.Reviews.Count > 10)
             .Where(genre != null ? b => b.Genre.Contains(genre, StringComparison.OrdinalIgnoreCase) : b => true)
             .OrderBy(b => b.Ratings.Count > 0 ? b.Ratings.Average(r => r.Score) : 0)
             .Select(b => new GetRecommendedBooksResponse

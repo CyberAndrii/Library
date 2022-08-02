@@ -50,7 +50,47 @@ public static class ApplicationBuilderExtensions
                     {
                         new()
                         {
-                            Id = ++reviewId, BookId = bookId, Message = "The best book ever", Reviewer = "John Doe",
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 1", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 2", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 3", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 4", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 5", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 6", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 7", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 8", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 9", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 10", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 11", Reviewer = "Anthony",
                         },
                     },
                 },
@@ -77,7 +117,51 @@ public static class ApplicationBuilderExtensions
                             Id = ++reviewId,
                             BookId = bookId,
                             Message = "The best book I have ever read",
-                            Reviewer = "John Doe",
+                            Reviewer = "Kelvin",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 1", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 2", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 3", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 4", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 5", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 6", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 7", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 8", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 9", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 10", Reviewer = "Anthony",
+                        },
+                        new()
+                        {
+                            Id = ++reviewId, BookId = bookId, Message = "The best book ever 11", Reviewer = "Anthony",
                         },
                     },
                 },
