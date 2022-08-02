@@ -15,5 +15,6 @@ export class BookListItemComponent {
   @Input() rating: number = 0;
 
   @Output() edit = new EventEmitter<number>();
+  @Output() view = new EventEmitter<number>();
 
 }

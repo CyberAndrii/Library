@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Details</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+
+  <div *ngIf="!book">Loading...</div>
+
+  <div *ngIf="book">
+    <div class="row">
+      <div class="col" style="max-width: 220px">
+        <img [src]="book.cover" class="rounded" style="max-width: 200px"
+             [alt]="book.title">
+        <h5 class="mt-2">{{ book.author }}</h5>
+        <p class="mt-2">{{ book.genre }}</p>
+        <span class="me-4">Reviews: {{ book.reviews.length }}</span>
+        <span>Rating: {{ book.rating.toFixed(1) }}</span>
+      </div>
+      <div class="col">
+        <div class="overflow-auto" style="max-height: 500px">{{ book.content }}</div>
+      </div>
+    </div>
+
+    <h5 class="mt-4">Reviews</h5>
+    <div class="mt-4" *ngFor="let review of book.reviews">
+      <span class="fw-bold">{{ review.reviewer }}</span>
+      <p>{{ review.message }}</p>
+    </div>
+  </div>
+
+</div>

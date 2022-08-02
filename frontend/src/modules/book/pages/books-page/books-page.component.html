@@ -18,7 +18,8 @@
                         [cover]="book.cover"
                         [reviews]="book.reviewsNumber"
                         [rating]="book.rating"
-                        (edit)="addBookCard.editExistingBook($event)">
+                        (edit)="addBookCard.editExistingBook($event)"
+                        (view)="openModal($event)">
         </book-list-item>
       </book-list>
 
@@ -41,7 +42,8 @@
                         [cover]="book.cover"
                         [reviews]="book.reviewsNumber"
                         [rating]="book.rating"
-                        (edit)="addBookCard.editExistingBook($event)">
+                        (edit)="addBookCard.editExistingBook($event)"
+                        (view)="openModal($event)">
         </book-list-item>
       </book-list>
 
