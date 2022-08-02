@@ -1,4 +1,4 @@
-<add-book-card #addBookCard></add-book-card>
+<add-book-card #addBookCard (save)="reloadBooks()"></add-book-card>
 
 <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs mt-4">
   <li [ngbNavItem]="0">
@@ -21,6 +21,7 @@
                         (edit)="addBookCard.editExistingBook($event)">
         </book-list-item>
       </book-list>
+
     </ng-template>
   </li>
   <li [ngbNavItem]="1">
@@ -30,7 +31,7 @@
       <form class="mt-4" style="display: inline-flex">
         <input type="text" class="form-control" style="width: 250px"
                name="genre" placeholder="Genre" [(ngModel)]="genreToSearch"/>
-        <button type="submit" class="btn btn-primary ms-3" (click)="reloadRecommendedBooks()">Search</button>
+        <button type="submit" class="btn btn-primary ms-3" (click)="reloadBooks()">Search</button>
       </form>
 
       <book-list>
@@ -43,6 +44,7 @@
                         (edit)="addBookCard.editExistingBook($event)">
         </book-list-item>
       </book-list>
+
     </ng-template>
   </li>
 </ul>

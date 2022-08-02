@@ -18,16 +18,13 @@ export class BooksPageComponent {
   books: Observable<GetBooksResponse[]>;
   recommendedBooks: Observable<GetRecommendedBooksResponse[]>;
 
-  constructor(private booksService: BooksService) {
+  constructor(private readonly booksService: BooksService) {
     this.books = booksService.getBooks();
     this.recommendedBooks = booksService.getRecommendedBooks();
   }
 
   reloadBooks() {
     this.books = this.booksService.getBooks(this.orderBy);
-  }
-
-  reloadRecommendedBooks() {
     this.recommendedBooks = this.booksService.getRecommendedBooks(this.genreToSearch);
   }
 

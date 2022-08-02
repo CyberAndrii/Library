@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {BooksService} from '../../services/books.service';
@@ -15,7 +15,9 @@ export class AddBookCardComponent {
 
   form: FormGroup;
 
-  constructor(private booksService: BooksService) {
+  @Output() save = new EventEmitter();
+
+  constructor(private readonly booksService: BooksService) {
     this.form = new FormGroup({
       id: new FormControl<number | null>(null),
       title: new FormControl<string>('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
@@ -59,7 +61,7 @@ export class AddBookCardComponent {
 
       this.booksService.saveBook(request)
         .subscribe(() => {
-          window.location.reload();
+          this.save.emit();
         });
     };
 
