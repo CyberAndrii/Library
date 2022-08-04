@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {BooksService} from '../../services/books.service';
 import {AbstractControlDirective} from "@angular/forms";
@@ -32,14 +32,41 @@ export class AddBookCardComponent {
     this.form.get('id')?.valueChanges.subscribe(value => this.updateCoverValidators(value));
   }
 
+  get id() {
+    return this.form.get('id');
+  }
+
+  get title() {
+    return this.form.get('title');
+  }
+
+  get genre() {
+    return this.form.get('genre');
+  }
+
+  get author() {
+    return this.form.get('author');
+  }
+
+  get content() {
+    return this.form.get('content');
+  }
+
+  get cover() {
+    return this.form.get('cover');
+  }
+
+  hasErrors(formControl: AbstractControl<any, any> | null): boolean {
+    return formControl?.invalid && (formControl?.dirty || formControl?.touched) || false;
+  }
+
   private updateCoverValidators = (value: number | null) => {
-    const cover = this.form.controls['cover'];
     if (value) {
-      cover.clearValidators();
+      this.cover!.clearValidators();
     } else {
-      cover.setValidators([Validators.required]);
+      this.cover!.setValidators([Validators.required]);
     }
-    cover.updateValueAndValidity();
+    this.cover!.updateValueAndValidity();
   }
 
   onSubmit(): void {
@@ -85,7 +112,7 @@ export class AddBookCardComponent {
       : (e.target as HTMLInputElement).files![0];
   }
 
-  editExistingBook(id: number): void {
+  public editExistingBook(id: number): void {
     this.booksService.getBookWithReviews(id)
       .subscribe(book => {
 
