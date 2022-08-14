@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Observable} from 'rxjs';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {GetBooksResponse} from '../../dto/responses/get-books-response';
@@ -6,29 +6,38 @@ import {GetRecommendedBooksResponse} from '../../dto/responses/get-recommended-b
 import {BooksOrderBy} from '../../models/books-order-by.model';
 import {BooksService} from '../../services/books.service';
 import {BookDetailsModalComponent} from '../../components/book-details-modal/book-details-modal.component';
+import {Store} from '@ngrx/store';
+import {getBooks} from '../../state/book.actions';
+import {selectBooks} from '../../state/book.selectors';
+import {BookRootState} from '../../state/book-root.state';
 
 @Component({
   selector: 'books-page',
   templateUrl: './books-page.component.html',
 })
-export class BooksPageComponent {
+export class BooksPageComponent implements OnInit {
 
   activeTab = 0;
-  genreToSearch: string = '';
+  genreToSearch = '';
   orderBy: BooksOrderBy = BooksOrderBy.Title;
 
-  books: Observable<GetBooksResponse[]>;
-  recommendedBooks: Observable<GetRecommendedBooksResponse[]>;
+  books$ = this.store.select(selectBooks);
+  recommendedBooks$: Observable<GetRecommendedBooksResponse[]>;
 
-  constructor(private readonly booksService: BooksService,
+  constructor(private readonly store: Store<BookRootState>,
+              private readonly booksService: BooksService,
               private readonly modalService: NgbModal) {
-    this.books = booksService.getBooks();
-    this.recommendedBooks = booksService.getRecommendedBooks();
+
+    this.recommendedBooks$ = this.booksService.getRecommendedBooks(this.genreToSearch);
+  }
+
+  ngOnInit() {
+    this.reloadBooks();
   }
 
   reloadBooks() {
-    this.books = this.booksService.getBooks(this.orderBy);
-    this.recommendedBooks = this.booksService.getRecommendedBooks(this.genreToSearch);
+    this.store.dispatch(getBooks({orderBy: this.orderBy}));
+    this.recommendedBooks$ = this.booksService.getRecommendedBooks(this.genreToSearch);
   }
 
   openModal(id: number) {

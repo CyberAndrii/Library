@@ -12,7 +12,7 @@
       </select>
 
       <book-list>
-        <book-list-item *ngFor="let book of (books | async)"
+        <book-list-item *ngFor="let book of (books$ | async)"
                         [id]="book.id"
                         [title]="book.title"
                         [cover]="book.cover"
@@ -36,7 +36,7 @@
       </form>
 
       <book-list>
-        <book-list-item *ngFor="let book of (recommendedBooks | async)"
+        <book-list-item *ngFor="let book of (recommendedBooks$ | async)"
                         [id]="book.id"
                         [title]="book.title"
                         [cover]="book.cover"
